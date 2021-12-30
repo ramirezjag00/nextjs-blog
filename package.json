@@ -6,7 +6,14 @@
     "start": "next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lintFix": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "prettier": "prettier --loglevel warn --write \"src/**/*.{ts,tsx,js}\""
+    "prettier": "prettier --loglevel warn --write \"src/**/*.{ts,tsx,js}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "\"src/**/*.{ts,tsx}\"": [
+      "eslint",
+      "prettier --write"
+    ]
   },
   "engines": {
     "node": ">=16.0.0 <= 16.99.0",
@@ -39,6 +46,8 @@
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.4",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
   }
