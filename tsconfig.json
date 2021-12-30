@@ -25,8 +25,9 @@
     "target": "esnext",
     "paths": {
       "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
       "@customTypes/*": ["types/*"],
-      "@lib/*": ["lib/*"],
+      "@utils/*": ["utils/*"],
       "@styles/*": ["styles/*"]
     },
   },
