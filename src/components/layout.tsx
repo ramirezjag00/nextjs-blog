@@ -1,74 +1,75 @@
+import { FC, ReactNode } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from './layout.module.css'
+import SITE_TITLE from '@constants/constants'
+
 import utilStyles from '@styles/utils.module.css'
+import styles from '@components/layout.module.css'
 
-const name = 'Andrey'
-export const siteTitle = 'Next.js Sample Website'
+const NAME = 'Andrey'
 
-export default function Layout({
-  children,
-  home
-}: {
-  children: React.ReactNode
-  home?: boolean
-}) {
+interface Props {
+  children: ReactNode
+  isHome?: boolean
+}
+
+const Layout: FC<Props> = ({ children, isHome }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link href="/favicon.ico" rel="icon" />
         <meta
-          name="description"
           content="Learn how to build a personal website using Next.js"
+          name="description"
         />
         <meta
-          property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
+            SITE_TITLE,
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          property="og:image"
         />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta content={SITE_TITLE} name="og:title" />
+        <meta content="summary_large_image" name="twitter:card" />
       </Head>
       <header className={styles.header}>
-        {home ? (
+        {isHome ? (
           <>
             <Image
-              priority
-              src="/images/profile.jpg"
+              alt={NAME}
               className={utilStyles.borderCircle}
               height={144}
+              src="/images/profile.jpg"
               width={144}
-              alt={name}
+              priority
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className={utilStyles.heading2Xl}>{NAME}</h1>
           </>
         ) : (
           <>
             <Link href="/">
               <a>
                 <Image
-                  priority
-                  src="/images/profile.jpg"
+                  alt={NAME}
                   className={utilStyles.borderCircle}
                   height={108}
+                  src="/images/profile.jpg"
                   width={108}
-                  alt={name}
+                  priority
                 />
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a className={utilStyles.colorInherit}>{NAME}</a>
               </Link>
             </h2>
           </>
         )}
       </header>
       <main>{children}</main>
-      {!home && (
+      {!isHome && (
         <div className={styles.backToHome}>
           <Link href="/">
             <a>← Back to home</a>
@@ -78,3 +79,5 @@ export default function Layout({
     </div>
   )
 }
+
+export default Layout

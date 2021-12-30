@@ -1,39 +1,46 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import { FC } from 'react'
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
+
+import Date from '@components/date'
+import Layout from '@components/layout'
+import { getSortedPostsData } from '@utils/posts'
+import SITE_TITLE from '@constants/constants'
+import { PostsDataType } from '@customTypes/posts'
 
 import utilStyles from '@styles/utils.module.css'
-import { getSortedPostsData } from '@lib/posts'
-import Layout, { siteTitle } from '@components/layout'
-import Date from '@components/date'
 
-export const getStaticProps: GetStaticProps = async () => {
+const getStaticProps: GetStaticProps = () => {
   const allPostsData = getSortedPostsData()
+
   return {
     props: {
-      allPostsData
-    }
+      allPostsData,
+    },
   }
 }
+interface Props {
+  allPostsData: PostsDataType
+}
 
-export default function Home({
-  allPostsData
-}: {
-  allPostsData: {
-    date: string
-    title: string
-    id: string
-  }[]
-}) {
+const Home: FC<Props> = ({ allPostsData }) => {
   return (
-    <Layout home>
+    <Layout isHome>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{SITE_TITLE}</title>
       </Head>
-      <section className={`${utilStyles.headingMd} ${utilStyles.centerVertical}`}>
+      <section
+        className={`${utilStyles.headingMd} ${utilStyles.centerVertical}`}>
         <p>React Native Developer experimenting on web tech again</p>
-        <Image priority src="/images/hereicome.jpg" height={500} width={400} alt={'HERE I COME!'} />
+        <Image
+          alt={'HERE I COME!'}
+          height={500}
+          src="/images/hereicome.jpg"
+          width={400}
+          priority
+        />
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
@@ -43,7 +50,7 @@ export default function Home({
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li key={id} className={utilStyles.listItem}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
@@ -58,3 +65,5 @@ export default function Home({
     </Layout>
   )
 }
+
+export { Home as default, getStaticProps }
