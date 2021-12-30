@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "alwaysStrict": true,
+    "baseUrl": "./src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
@@ -22,10 +23,12 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-  },
-  "paths": {
-    "@components/*": ["components/*"],
-    "@customTypes/*": ["types/*"],
+    "paths": {
+      "@components/*": ["components/*"],
+      "@customTypes/*": ["types/*"],
+      "@lib/*": ["lib/*"],
+      "@styles/*": ["styles/*"]
+    },
   },
   "include": [
     "next-env.d.ts",
