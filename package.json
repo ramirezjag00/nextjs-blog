@@ -4,7 +4,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"src/**/*.{ts,tsx}\""
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lintFix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "prettier": "prettier --loglevel warn --write \"src/**/*.{ts,tsx,js}\""
   },
   "engines": {
     "node": ">=16.0.0 <= 16.99.0",
