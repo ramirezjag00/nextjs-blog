@@ -1,4 +1,4 @@
 declare module 'remark-html' {
-  const html: any
+  const html: Plugin<[], Root, Root>
   export default html
 }
