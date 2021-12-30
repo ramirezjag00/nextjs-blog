@@ -12,15 +12,6 @@ import { PostsDataType } from '@customTypes/posts'
 
 import utilStyles from '@styles/utils.module.css'
 
-const getStaticProps: GetStaticProps = () => {
-  const allPostsData = getSortedPostsData()
-
-  return {
-    props: {
-      allPostsData,
-    },
-  }
-}
 interface Props {
   allPostsData: PostsDataType
 }
@@ -64,6 +55,16 @@ const Home: FC<Props> = ({ allPostsData }) => {
       </section>
     </Layout>
   )
+}
+
+const getStaticProps: GetStaticProps = () => {
+  const allPostsData = getSortedPostsData()
+
+  return {
+    props: {
+      allPostsData,
+    },
+  }
 }
 
 export { Home as default, getStaticProps }
