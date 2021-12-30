@@ -6,7 +6,7 @@
     "start": "next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lintFix": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "prettier": "prettier --loglevel warn --write \"src/**/*.{ts,tsx,js}\"",
+    "prettier": "prettier --loglevel warn --write \"src/**/*.{ts,tsx}\"",
     "prepare": "husky install"
   },
   "lint-staged": {
