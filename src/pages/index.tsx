@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
-import Date from '../components/date'
+import utilStyles from '@styles/utils.module.css'
+import { getSortedPostsData } from '@lib/posts'
+import Layout, { siteTitle } from '@components/layout'
+import Date from '@components/date'
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
