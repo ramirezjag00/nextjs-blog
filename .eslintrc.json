@@ -90,9 +90,15 @@
         "groups": ["builtin", "external", ["internal", "parent", "sibling", "index"], "unknown"],
         "pathGroups": [
           {
-            "pattern": "next",
+            "pattern": "+({next),next)/**,react)}",
             "group": "external",
             "position": "before"
+          },
+          {
+            "pattern": "**/*.+(css|sass|less|scss|pcss|styl|.module.css)",
+            "group": "index",
+            "patternOptions": { "dot": true, "matchBase": true, "nocomment": true },
+            "position": "after"
           },
           {
             "pattern": "**/*.+(png|jpg|jpeg|ico|json|gif)",
@@ -101,11 +107,11 @@
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react"],
+        "pathGroupsExcludedImportTypes": ["react", "next"],
         "newlines-between": "always",
         "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
+          "order": "ignore",
+          "caseInsensitive": false
         }
       }
     ],
